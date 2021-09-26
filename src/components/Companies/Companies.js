@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Company from '../Company/Company';
+import Members from '../Members/Members';
 
 const Companies = () => {
     const [companies, setCompanies] = useState([]);
+    const [club, setClub] = useState([]);
 
     useEffect( () => {
         fetch('./companies.json')
@@ -10,15 +12,29 @@ const Companies = () => {
         .then(data => setCompanies(data))
     }, []);
 
+    const handleJoinMember = (member) => {
+        // console.log(member)
+        const newClub = [...club, member];
+        setClub(newClub);
+    }
+
     return (
-        <div className="row row-cols-1 row-cols-md-3 g-4">
-            {
+        <div className="row">
+            <div className="col-md-9">
+                <div className="row row-cols-1 row-cols-md-3 g-4">
+                {
                 companies.map(company => <Company
-                    key={company.company}
+                    key={company.name}
                     company={company}
+                    joinMember={handleJoinMember}
+
                 >
                 </Company>)
-            }
+                }   
+                </div>
+            </div>
+            <Members members={club}>
+            </Members>
         </div>
     );
 };
