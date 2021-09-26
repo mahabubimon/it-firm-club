@@ -4,7 +4,7 @@ const Button = (props) => {
     return (
         <button className="btn btn-primary"
         onClick={()=> props.join(props.company)}
-        >Join IT Pro Club</button>
+        ><i className="fas fa-user-friends text-info"></i> Join IT Pro Club</button>
     );
 };
 

@@ -13,13 +13,12 @@ const Companies = () => {
     }, []);
 
     const handleJoinMember = (member) => {
-        // console.log(member)
         const newClub = [...club, member];
         setClub(newClub);
     }
 
     return (
-        <div className="row">
+        <div className="row py-5">
             <div className="col-md-9">
                 <div className="row row-cols-1 row-cols-md-3 g-4">
                 {
